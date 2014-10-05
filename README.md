@@ -3,6 +3,11 @@ dochunter
 
 website and infrastructure for finding, converting, indexing, and managing documents online
 
+How it works:
+
+![dochunter](http://i.imgur.com/iRmXO1u.png)
+
+
 First, fork the repo and clone it locally
 
     > git clone https://github.com/<your_user_name>/dochunter
