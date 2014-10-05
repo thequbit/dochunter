@@ -25,6 +25,8 @@ class MongoSession():
                 "scraper_id": "",
                 "scrape_datetime": datetime.datetime.utc(),
                 "converted": False,
+                "convert_datetime": None,
+                "convert_time": 0,
                 "local_filename": "",
                 "link_text": link_text,
                 "document_meta_data": {
@@ -65,7 +67,9 @@ class MongoSession():
                     'doc_url': 1,
                     'scraper_id': 1,
                     'scrape_datetime': 1,
+                    'convert_datetime': 1,
                     'converted': 1,
+                    'convert_time': 1,
                     'local_filename': 1,
                     'link_text': 1,
                     'document_meta_data': 1,
@@ -79,4 +83,28 @@ class MongoSession():
 
         return docs
 
-    
+    def get_unconverted_count_by_parent_url(self, parent_url):
+
+        success = False
+        count = 0
+        try:
+            count = self.documents.find({'converted': False}).count()
+            success = True
+        except:
+            pass
+
+        return success, count
+
+    def get_count_by_parent_url(self, parent_url):
+
+        success = False
+        count = 0
+        try:
+            count = self.documents.count()
+            success = True
+        except:
+            pass
+
+        return success, count
+
+
